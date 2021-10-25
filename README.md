@@ -7,7 +7,7 @@ Manual installation guide for fresh VPS based on Ubuntu 20.04.3 LTS with SSH.
 Change password
 
 ```
-passwd
+$ passwd
 ```
 
 ## Create user
@@ -133,6 +133,32 @@ Loading timezones
 $ mysql_tzinfo_to_sql /usr/share/zoneinfo | sudo mysql -u root mysql
 ```
 
+## Firewall
+
+Check applications added to Firewall
+
+```
+$ sudo ufw app list
+```
+
+Allow for SSH connections
+
+```
+$ sudo ufw allow OpenSSH
+```
+
+Enable firewall
+
+```
+$ sudo ufw enable
+```
+
+Check status
+
+```
+$ sudo ufw status
+```
+
 ## PHP & NGINX
 
 ### NGINX
@@ -144,10 +170,20 @@ $ sudo apt update
 $ sudo apt install nginx
 ```
 
-Unlock firewall
+Check firewall settings
 
 ```
 $ sudo ufw app list
+```
+
+It should print
+
+```
+Available applications:
+  Nginx Full
+  Nginx HTTP
+  Nginx HTTPS
+  OpenSSH
 ```
 
 ### PHP 8.0
